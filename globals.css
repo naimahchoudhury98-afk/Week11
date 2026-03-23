@@ -91,6 +91,14 @@ body {
     font-size: 1.5rem;
   }
 
+/* =============== */
+/* Scroll bar */
+/* =============== */
+
+.scroll-box {
+  @apply h-40 overflow-y-scroll border p-4;
+}
+
   .nav-links {
     width: 100%;
   }
