@@ -1,65 +1,100 @@
-import Image from "next/image";
+import Head from 'next/head';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Head>
+        <title>Submit Meal Plan and Recipes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
+      {/* Navbar */}
+      <div className="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+
+        <div className="navbar-right">
+          <a href="#">Login</a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        <div className="scroll-box"></div>
+      </div>
+
+      <main style={{ padding: '20px' }}>
+        <h1>Submit Your Meal Plans and Recipes</h1>
+
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Who the Author is</legend>
+
+            <label>Name:</label><br />
+            <input type="text" name="author_name" /><br /><br />
+
+            <label>Date:</label><br />
+            <input type="date" name="post_date" /><br /><br />
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>What the post is about</legend>
+
+            <label>Post Title:</label><br />
+            <input type="text" name="post_title" /><br /><br />
+
+            <label>Description:</label><br />
+            <textarea name="description" rows="4" cols="50"></textarea><br /><br />
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Daily Meal Plan</legend>
+
+            <label>Breakfast:</label><br />
+            <input type="text" name="breakfast" /><br /><br />
+
+            <label>Lunch:</label><br />
+            <input type="text" name="lunch" /><br /><br />
+
+            <label>Dinner:</label><br />
+            <input type="text" name="dinner" /><br /><br />
+
+            <label>Snacks:</label><br />
+            <textarea name="snacks" rows="3" cols="50"></textarea>
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Recipe Details</legend>
+
+            <label>Recipe Name:</label><br />
+            <input type="text" name="recipe_name" /><br /><br />
+
+            <label>Prep Time:</label><br />
+            <input type="text" name="prep_time" /><br /><br />
+
+            <label>Cook Time:</label><br />
+            <input type="text" name="cook_time" /><br /><br />
+
+            <label>Servings:</label><br />
+            <input type="number" name="servings" /><br /><br />
+
+            <label>Ingredients:</label><br />
+            <textarea name="ingredients" rows="5" cols="50"></textarea><br /><br />
+
+            <label>Instructions:</label><br />
+            <textarea name="instructions" rows="5" cols="50"></textarea><br /><br />
+          </fieldset>
+
+          <br />
+
+          <input type="submit" value="Submit Post" />
+          <input type="reset" value="Clear Form" />
+        </form>
       </main>
-    </div>
+    </>
   );
 }
