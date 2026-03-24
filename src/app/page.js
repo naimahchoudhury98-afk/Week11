@@ -1,100 +1,22 @@
-import PlannerForm from "@/components/PlannerForm";
-import Head from "next/head";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <Head>
-        <title>Submit Meal Plan and Recipes</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+    <main className="min-h-screen flex flex-col items-center justify-center bg-white px-6">
+      <h1 className="text-4xl font-bold mb-4 text-gray-900">
+        Plan your week with community-powered recipes
+      </h1>
 
-      <main style={{ padding: "20px" }}>
-        <h1>Submit Your Meal Plans and Recipes</h1>
+      <p className="text-gray-600 max-w-xl text-center mb-8">
+        Browse recipes from home cooks everywhere and build your weekly meal plan.
+      </p>
 
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Who the Author is</legend>
-
-            <label>Name:</label>
-            <br />
-            <input type="text" name="author_name" />
-            <br />
-            <br />
-
-            <label>Date:</label>
-            <br />
-            <input type="date" name="post_date" />
-            <br />
-            <br />
-          </fieldset>
-
-          <br />
-
-          <fieldset>
-            <legend>What the post is about</legend>
-
-            <label>Post Title:</label>
-            <br />
-            <input type="text" name="post_title" />
-            <br />
-            <br />
-
-            <label>Description:</label>
-            <br />
-            <textarea name="description" rows="4" cols="50"></textarea>
-            <br />
-            <br />
-          </fieldset>
-
-          <PlannerForm />
-
-          <fieldset>
-            <legend>Recipe Details</legend>
-
-            <label>Recipe Name:</label>
-            <br />
-            <input type="text" name="recipe_name" />
-            <br />
-            <br />
-
-            <label>Prep Time:</label>
-            <br />
-            <input type="text" name="prep_time" />
-            <br />
-            <br />
-
-            <label>Cook Time:</label>
-            <br />
-            <input type="text" name="cook_time" />
-            <br />
-            <br />
-
-            <label>Servings:</label>
-            <br />
-            <input type="number" name="servings" />
-            <br />
-            <br />
-
-            <label>Ingredients:</label>
-            <br />
-            <textarea name="ingredients" rows="5" cols="50"></textarea>
-            <br />
-            <br />
-
-            <label>Instructions:</label>
-            <br />
-            <textarea name="instructions" rows="5" cols="50"></textarea>
-            <br />
-            <br />
-          </fieldset>
-
-          <br />
-
-          <input type="submit" value="Submit Post" />
-          <input type="reset" value="Clear Form" />
-        </form>
-      </main>
-    </>
+      <div className="flex gap-4">
+        <a href="/sign-up" className="px-6 py-3 bg-blue-600 text-white rounded-lg">
+          Sign Up
+        </a>
+        <a href="/recipes" className="px-6 py-3 border border-gray-300 rounded-lg">
+          Browse Recipes
+        </a>
+      </div>
+    </main>
   );
 }
