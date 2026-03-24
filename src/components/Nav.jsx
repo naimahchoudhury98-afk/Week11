@@ -1,3 +1,4 @@
+import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 export default function Nav() {
@@ -5,12 +6,17 @@ export default function Nav() {
     <>
       {/* Navbar */}
       <nav className="navbar">
-        <Link href="#">Home</Link>
-        <Link href="#">About</Link>
-        <Link href="#">Contact</Link>
+        <Link href="/">Home</Link>
+        <Link href="/about">About</Link>
+        <Link href="/contact">Contact</Link>
 
         <div className="navbar-right">
-          <a href="#">Login</a>
+          <Show when={"signed-in"}>
+            <UserButton />
+          </Show>
+          <Show when={"signed-out"}>
+            <SignInButton />
+          </Show>
         </div>
 
         <div className="scroll-box"></div>

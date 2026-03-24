@@ -1,3 +1,4 @@
+import PlannerForm from "@/components/PlannerForm";
 import Head from "next/head";
 
 export default function Home() {
@@ -46,35 +47,7 @@ export default function Home() {
             <br />
           </fieldset>
 
-          <br />
-
-          <fieldset>
-            <legend>Daily Meal Plan</legend>
-
-            <label>Breakfast:</label>
-            <br />
-            <input type="text" name="breakfast" />
-            <br />
-            <br />
-
-            <label>Lunch:</label>
-            <br />
-            <input type="text" name="lunch" />
-            <br />
-            <br />
-
-            <label>Dinner:</label>
-            <br />
-            <input type="text" name="dinner" />
-            <br />
-            <br />
-
-            <label>Snacks:</label>
-            <br />
-            <textarea name="snacks" rows="3" cols="50"></textarea>
-          </fieldset>
-
-          <br />
+          <PlannerForm />
 
           <fieldset>
             <legend>Recipe Details</legend>
