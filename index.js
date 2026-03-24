@@ -9,30 +9,30 @@ export default function Home() {
       </Head>
 
       {/* Navbar */}
-      <div className="navbar">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+      <div className="navbar" role="navigation" aria-label="Main navigation">
+        <a href="#" aria-label="Go to home page">Home</a>
+        <a href="#" aria-label="Go to about page">About</a>
+        <a href="#" aria-label="Go to contact page">Contact</a>
 
         <div className="navbar-right">
-          <a href="#">Login</a>
+          <a href="#" aria-label="Login to your account">Login</a>
         </div>
 
-        <div className="scroll-box"></div>
+        <div className="scroll-box" aria-hidden="true"></div>
       </div>
 
-      <main style={{ padding: '20px' }}>
+      <main style={{ padding: '20px' }} role="main">
         <h1>Submit Your Meal Plans and Recipes</h1>
 
-        <form action="#" method="post">
+        <form action="#" method="post" aria-label="Meal plan submission form">
           <fieldset>
             <legend>Who the Author is</legend>
 
-            <label>Name:</label><br />
-            <input type="text" name="author_name" /><br /><br />
+            <label htmlFor="author_name">Name:</label><br />
+            <input type="text" id="author_name" name="author_name" aria-required="true" /><br /><br />
 
-            <label>Date:</label><br />
-            <input type="date" name="post_date" /><br /><br />
+            <label htmlFor="post_date">Date:</label><br />
+            <input type="date" id="post_date" name="post_date" /><br /><br />
           </fieldset>
 
           <br />
@@ -40,11 +40,11 @@ export default function Home() {
           <fieldset>
             <legend>What the post is about</legend>
 
-            <label>Post Title:</label><br />
-            <input type="text" name="post_title" /><br /><br />
+            <label htmlFor="post_title">Post Title:</label><br />
+            <input type="text" id="post_title" name="post_title" aria-required="true" /><br /><br />
 
-            <label>Description:</label><br />
-            <textarea name="description" rows="4" cols="50"></textarea><br /><br />
+            <label htmlFor="description">Description:</label><br />
+            <textarea id="description" name="description" rows="4" cols="50"></textarea><br /><br />
           </fieldset>
 
           <br />
@@ -52,17 +52,17 @@ export default function Home() {
           <fieldset>
             <legend>Daily Meal Plan</legend>
 
-            <label>Breakfast:</label><br />
-            <input type="text" name="breakfast" /><br /><br />
+            <label htmlFor="breakfast">Breakfast:</label><br />
+            <input type="text" id="breakfast" name="breakfast" /><br /><br />
 
-            <label>Lunch:</label><br />
-            <input type="text" name="lunch" /><br /><br />
+            <label htmlFor="lunch">Lunch:</label><br />
+            <input type="text" id="lunch" name="lunch" /><br /><br />
 
-            <label>Dinner:</label><br />
-            <input type="text" name="dinner" /><br /><br />
+            <label htmlFor="dinner">Dinner:</label><br />
+            <input type="text" id="dinner" name="dinner" /><br /><br />
 
-            <label>Snacks:</label><br />
-            <textarea name="snacks" rows="3" cols="50"></textarea>
+            <label htmlFor="snacks">Snacks:</label><br />
+            <textarea id="snacks" name="snacks" rows="3" cols="50"></textarea>
           </fieldset>
 
           <br />
@@ -70,31 +70,31 @@ export default function Home() {
           <fieldset>
             <legend>Recipe Details</legend>
 
-            <label>Recipe Name:</label><br />
-            <input type="text" name="recipe_name" /><br /><br />
+            <label htmlFor="recipe_name">Recipe Name:</label><br />
+            <input type="text" id="recipe_name" name="recipe_name" /><br /><br />
 
-            <label>Prep Time:</label><br />
-            <input type="text" name="prep_time" /><br /><br />
+            <label htmlFor="prep_time">Prep Time:</label><br />
+            <input type="text" id="prep_time" name="prep_time" /><br /><br />
 
-            <label>Cook Time:</label><br />
-            <input type="text" name="cook_time" /><br /><br />
+            <label htmlFor="cook_time">Cook Time:</label><br />
+            <input type="text" id="cook_time" name="cook_time" /><br /><br />
 
-            <label>Servings:</label><br />
-            <input type="number" name="servings" /><br /><br />
+            <label htmlFor="servings">Servings:</label><br />
+            <input type="number" id="servings" name="servings" /><br /><br />
 
-            <label>Ingredients:</label><br />
-            <textarea name="ingredients" rows="5" cols="50"></textarea><br /><br />
+            <label htmlFor="ingredients">Ingredients:</label><br />
+            <textarea id="ingredients" name="ingredients" rows="5" cols="50"></textarea><br /><br />
 
-            <label>Instructions:</label><br />
-            <textarea name="instructions" rows="5" cols="50"></textarea><br /><br />
+            <label htmlFor="instructions">Instructions:</label><br />
+            <textarea id="instructions" name="instructions" rows="5" cols="50"></textarea><br /><br />
           </fieldset>
 
           <br />
 
-          <input type="submit" value="Submit Post" />
-          <input type="reset" value="Clear Form" />
+          <input type="submit" value="Submit Post" aria-label="Submit your meal plan" />
+          <input type="reset" value="Clear Form" aria-label="Clear the form" />
         </form>
       </main>
     </>
   );
-}
+}      
