@@ -8,3 +8,12 @@ export default function Footer() {
     </footer>
   );
 }
+
+const styles = {
+  footer: {
+    textAlign: "center",
+    padding: "20px",
+    borderTop: "1px solid #eaeaea",
+    marginTop: "40px",
+  },
+};
