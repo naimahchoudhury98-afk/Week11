@@ -1,6 +1,18 @@
+import { useState } from "react";
 import Head from "next/head";
 
 export default function Home() {
+  // State for sort button
+  const [isNewestToOldest, setIsNewestToOldest] = useState(true);
+
+  // Toggle function
+  const toggleSort = () => {
+    setIsNewestToOldest((prev) => !prev);
+    console.log(
+      `Sorting: ${!isNewestToOldest ? "Newest to Oldest" : "Oldest to Newest"}`
+    );
+  };
+
   return (
     <>
       <Head>
@@ -10,6 +22,24 @@ export default function Home() {
 
       <main style={{ padding: "20px" }}>
         <h1>Submit Your Meal Plans and Recipes</h1>
+
+        {/* Sort Button */}
+        <button
+          onClick={toggleSort}
+          aria-label={
+            isNewestToOldest
+              ? "Sort items from newest to oldest"
+              : "Sort items from oldest to newest"
+          }
+          aria-pressed={isNewestToOldest}
+          style={{
+            marginBottom: "20px",
+            padding: "10px 15px",
+            cursor: "pointer",
+          }}
+        >
+          {isNewestToOldest ? "Newest to Oldest" : "Oldest to Newest"}
+        </button>
 
         <form action="#" method="post">
           <fieldset>
