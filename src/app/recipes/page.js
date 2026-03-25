@@ -18,75 +18,89 @@ export default function RecipesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-white px-6 py-10">
+    <div className="min-h-screen px-6 pt-16 pb-16">
       <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-10">
+          <div>
+            <p className="inline-flex items-center rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700 mb-4">
+              Discover your next meal
+            </p>
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
+              All Recipes
+            </h1>
+            <p className="text-gray-600 mt-3 max-w-xl">
+              Browse community recipes and find something good for the week ahead.
+            </p>
+          </div>
 
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">All Recipes</h1>
           <Link
             href="/add-recipe"
-            className="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700"
+            className="inline-flex items-center justify-center rounded-full bg-[#6c47ff] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#5a3de0] transition"
           >
             + Add a Recipe
           </Link>
         </div>
 
-        {/* Search */}
-        <input
-          type="text"
-          placeholder="Search recipes or cuisine..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full border p-3 rounded-lg mb-8 text-gray-700"
-        />
+        <div className="mb-10">
+          <input
+            type="text"
+            placeholder="Search recipes or cuisine..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full rounded-2xl border border-gray-200 bg-white px-5 py-4 text-gray-700 shadow-sm outline-none placeholder:text-gray-400 focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10"
+          />
+        </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((recipe) => (
-            <Link href={`/recipes/${recipe.id}`} key={recipe.id}>
-              <div className="border rounded-lg overflow-hidden hover:shadow-md transition cursor-pointer">
-
-                {/* 🔥 IMAGE FIX */}
+            <Link href={`/recipes/${recipe.id}`} key={recipe.id} className="group">
+              <article className="h-full overflow-hidden rounded-[28px] bg-white shadow-sm ring-1 ring-gray-100 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                 {recipe.image_url && recipe.image_url.trim() !== "" ? (
-                  <img
-                    src={recipe.image_url}
-                    alt={recipe.title || "Recipe image"}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="overflow-hidden">
+                    <img
+                      src={recipe.image_url}
+                      alt={recipe.title || "Recipe image"}
+                      referrerPolicy="no-referrer"
+                      className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 ) : (
-                  <div className="w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400">
+                  <div className="flex h-56 w-full items-center justify-center bg-gradient-to-br from-orange-50 to-[#f4f0ff] text-gray-400">
                     No image
                   </div>
                 )}
 
-                {/* Content */}
-                <div className="p-4">
-                  <h2 className="text-lg font-bold text-gray-900 mb-1">
+                <div className="p-6">
+                  <div className="mb-3">
+                    <span className="inline-flex rounded-full bg-[#f4f0ff] px-3 py-1 text-xs font-medium uppercase tracking-wide text-[#6c47ff]">
+                      {recipe.cuisine || "Recipe"}
+                    </span>
+                  </div>
+
+                  <h2 className="text-xl font-semibold text-gray-900 mb-2 transition group-hover:text-[#6c47ff]">
                     {recipe.title}
                   </h2>
-                  <p className="text-sm text-gray-500 mb-2">
-                    {recipe.cuisine}
-                  </p>
-                  <p className="text-sm text-gray-600 line-clamp-2">
+
+                  <p className="text-sm leading-6 text-gray-600 line-clamp-3">
                     {recipe.description}
                   </p>
                 </div>
-
-              </div>
+              </article>
             </Link>
           ))}
         </div>
 
-        {/* Empty State */}
         {filtered.length === 0 && (
-          <p className="text-center text-gray-500 mt-10">
-            {`No recipes found for "${search}"`}
-          </p>
+          <div className="mt-14 rounded-3xl bg-white px-6 py-12 text-center shadow-sm ring-1 ring-gray-100">
+            <p className="text-lg font-medium text-gray-700">
+              {`No recipes found for "${search}"`}
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Try a different recipe name or cuisine.
+            </p>
+          </div>
         )}
-
       </div>
-    </main>
+    </div>
   );
 }

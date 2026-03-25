@@ -49,17 +49,26 @@ export default function NewRecipePage() {
   }
 
   return (
-    <main className="min-h-screen bg-white px-6 py-12">
+    <div className="min-h-screen px-6 pt-16 pb-20">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2 text-gray-900">Add a Recipe</h1>
-        <p className="text-gray-500 mb-8">
-          Fill in the details below. Use commas for ingredients and full stops for each instruction step.
-        </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6 bg-gray-50 p-6 rounded-lg shadow-sm"
-        >
+        <div className="mb-10">
+          <p className="inline-flex items-center rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700 mb-4">
+            Share something delicious
+          </p>
+
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
+            Add a Recipe
+          </h1>
+
+          <p className="text-gray-600 mt-3">
+            Fill in the details below. Keep ingredients comma-separated and instructions as sentences.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-8">
+
+          {/* Title */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Title
@@ -68,83 +77,89 @@ export default function NewRecipePage() {
               placeholder="e.g. Chicken Tikka Masala"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full border p-3 rounded-lg text-gray-700"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10 outline-none"
             />
           </div>
 
+          {/* Description */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Description
             </label>
             <textarea
-              placeholder="e.g. Creamy, spiced chicken curry with a rich tomato sauce"
+              placeholder="Short description of your dish"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full border p-3 rounded-lg text-gray-700 min-h-[120px]"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm min-h-[120px] focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10 outline-none"
             />
           </div>
 
+          {/* Ingredients */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Ingredients
             </label>
             <textarea
-              placeholder="e.g. 500g chicken, 1 onion, 2 garlic cloves, 400ml coconut milk"
+              placeholder="e.g. 500g chicken, 1 onion, 2 garlic cloves"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
-              className="w-full border p-3 rounded-lg text-gray-700 min-h-[140px]"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm min-h-[140px] focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10 outline-none"
             />
             <p className="text-sm text-gray-500 mt-2">
-              Separate each ingredient with a comma.
+              Separate each ingredient with a comma
             </p>
           </div>
 
+          {/* Instructions */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Instructions
             </label>
             <textarea
-              placeholder="e.g. Fry the onion. Add the chicken. Stir in the sauce. Simmer for 20 minutes."
+              placeholder="e.g. Fry the onion. Add the chicken. Simmer for 20 minutes."
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
-              className="w-full border p-3 rounded-lg text-gray-700 min-h-[160px]"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm min-h-[160px] focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10 outline-none"
             />
             <p className="text-sm text-gray-500 mt-2">
-              Write each step as a sentence ending with a full stop.
+              Write each step as a sentence
             </p>
           </div>
 
+          {/* Image */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Image URL
             </label>
             <input
-              placeholder="Paste an image link here"
+              placeholder="Paste an image link"
               value={image_url}
               onChange={(e) => setImageUrl(e.target.value)}
-              className="w-full border p-3 rounded-lg text-gray-700"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10 outline-none"
             />
             <p className="text-sm text-gray-500 mt-2">
               Optional
             </p>
           </div>
 
+          {/* Cuisine */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Cuisine
             </label>
             <input
-              placeholder="e.g. Indian, Italian, Mexican"
+              placeholder="e.g. Italian, Indian"
               value={cuisine}
               onChange={(e) => setCuisine(e.target.value)}
-              className="w-full border p-3 rounded-lg text-gray-700"
+              className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm focus:border-[#6c47ff] focus:ring-2 focus:ring-[#6c47ff]/10 outline-none"
             />
           </div>
 
+          {/* Button */}
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 text-white rounded-lg font-medium transition ${
+            className={`w-full py-3 rounded-full text-white font-semibold transition ${
               loading
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-[#6c47ff] hover:bg-[#5a3de0]"
@@ -152,8 +167,9 @@ export default function NewRecipePage() {
           >
             {loading ? "Adding recipe..." : "Add Recipe"}
           </button>
+
         </form>
       </div>
-    </main>
+    </div>
   );
 }
