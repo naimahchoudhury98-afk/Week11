@@ -1,100 +1,54 @@
-import PlannerForm from "@/components/PlannerForm";
-import Head from "next/head";
+"use client";
+import { useState } from "react";
+import { useUser } from "@clerk/nextjs";
 
-export default function AddRecipeForm() {
+export default function NewRecipePage() {
+  const { user } = useUser();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
+  const [image_url, setImageUrl] = useState("");
+  const [cuisine, setCuisine] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!user) {
+      alert ("You must be signed in to add a recipe");
+      return;
+    }
+
+    await fetch("/api/recipes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title,
+        description,
+        ingredients,
+        instructions,
+        image_url,
+        cuisine,
+        user_id: user.id
+      })
+    });
+    alert("Recipe added! 🎉");
+  }
+
   return (
-    <>
-      <Head>
-        <title>Submit Meal Plan and Recipes</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
-      <main style={{ padding: "20px" }}>
-        <h1>Submit Your Meal Plans and Recipes</h1>
-
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Who the Author is</legend>
-
-            <label>Name:</label>
-            <br />
-            <input type="text" name="author_name" />
-            <br />
-            <br />
-
-            <label>Date:</label>
-            <br />
-            <input type="date" name="post_date" />
-            <br />
-            <br />
-          </fieldset>
-
-          <br />
-
-          <fieldset>
-            <legend>What the post is about</legend>
-
-            <label>Post Title:</label>
-            <br />
-            <input type="text" name="post_title" />
-            <br />
-            <br />
-
-            <label>Description:</label>
-            <br />
-            <textarea name="description" rows="4" cols="50"></textarea>
-            <br />
-            <br />
-          </fieldset>
-
-          <PlannerForm />
-
-          <fieldset>
-            <legend>Recipe Details</legend>
-
-            <label>Recipe Name:</label>
-            <br />
-            <input type="text" name="recipe_name" />
-            <br />
-            <br />
-
-            <label>Prep Time:</label>
-            <br />
-            <input type="text" name="prep_time" />
-            <br />
-            <br />
-
-            <label>Cook Time:</label>
-            <br />
-            <input type="text" name="cook_time" />
-            <br />
-            <br />
-
-            <label>Servings:</label>
-            <br />
-            <input type="number" name="servings" />
-            <br />
-            <br />
-
-            <label>Ingredients:</label>
-            <br />
-            <textarea name="ingredients" rows="5" cols="50"></textarea>
-            <br />
-            <br />
-
-            <label>Instructions:</label>
-            <br />
-            <textarea name="instructions" rows="5" cols="50"></textarea>
-            <br />
-            <br />
-          </fieldset>
-
-          <br />
-
-          <input type="submit" value="Submit Post" />
-          <input type="reset" value="Clear Form" />
-        </form>
-      </main>
-    </>
+    <main className="min-h-screen bg-white px-6 py-12">
+      <div className="max-w-2xl mx-auto">
+      <h1 className="text-3xl font-bold mb-8 text-gray-900">Add a Recipe</h1>
+      <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-6 rounded-lg shadow-sm">
+        <input placeholder="Title" onChange={(e) => setTitle(e.target.value)} className="w-full border p-3 rounded"/>
+        <textarea placeholder="Description" onChange={(e) => setDescription(e.target.value)} className="w-full border p-3 rounded"/>
+        <textarea placeholder="Ingredients" onChange={(e) => setIngredients(e.target.value)} className="w-full border p-3 rounded"/>
+        <textarea placeholder="Instructions" onChange={(e) => setInstructions(e.target.value)} className="w-full border p-3 rounded"/>
+        <input placeholder="Image URL" onChange={(e) => setImageUrl(e.target.value)} className="w-full border p-3 rounded"/>
+        <input placeholder="Cuisine" onChange={(e) => setCuisine(e.target.value)} className="w-full border p-3 rounded"/>
+        <button type="submit" className="w-full bg-[#6c47ff] text-white rounded-lg font-medium hover:bg-[#5a3de0] transition">Add Recipe</button>
+      </form>
+      </div>
+    </main>
   );
 }
