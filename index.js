@@ -2,10 +2,8 @@ import { useState } from "react";
 import Head from "next/head";
 
 export default function Home() {
-  // State for sort button
   const [isNewestToOldest, setIsNewestToOldest] = useState(true);
 
-  // Toggle function
   const toggleSort = () => {
     setIsNewestToOldest((prev) => !prev);
     console.log(
@@ -23,7 +21,6 @@ export default function Home() {
       <main style={{ padding: "20px" }}>
         <h1>Submit Your Meal Plans and Recipes</h1>
 
-        {/* Sort Button */}
         <button
           onClick={toggleSort}
           aria-label={
