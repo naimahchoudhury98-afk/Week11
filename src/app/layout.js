@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { SignInButton, SignUpButton, UserButton, Show } from "@clerk/nextjs";
+import { UserButton, Show } from "@clerk/nextjs";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
@@ -74,17 +74,19 @@ export default function RootLayout({ children }) {
                   </Show>
 
                   <Show when="signed-out">
-                    <SignInButton>
-                      <button className="text-sm font-medium text-gray-600 hover:text-gray-900 transition">
-                        Sign In
-                      </button>
-                    </SignInButton>
+                    <Link
+                      href="/sign-in"
+                      className="text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+                    >
+                      Sign In
+                    </Link>
 
-                    <SignUpButton>
-                      <button className="rounded-full bg-[#6c47ff] px-5 py-2 text-sm font-semibold text-white hover:bg-[#5a3de0] transition">
-                        Sign Up
-                      </button>
-                    </SignUpButton>
+                    <Link
+                      href="/sign-up"
+                      className="rounded-full bg-[#6c47ff] px-5 py-2 text-sm font-semibold text-white hover:bg-[#5a3de0] transition"
+                    >
+                      Sign Up
+                    </Link>
                   </Show>
                 </nav>
               </div>
